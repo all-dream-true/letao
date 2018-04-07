@@ -24,6 +24,31 @@ $(document).ajaxStop(function () {
   }, 500)
 })
 
+
+
+//在一进入页面进行登录状态的获取
+//如果后端设置了content-type: 'json',
+//jquery会自动识别，将返回的数据，当成json字符串解析成字符串
+
+if (location.href.indexOf("login.html") === -1) {
+  $.ajax({
+    url: '/employee/checkRootLogin',
+    type: 'get',
+    success: function(info) {
+      console.log(info);
+      if (info.success) {
+        console.log("登录了");
+      }
+
+      if (info.error === 400) {
+        //进行拦截，拦截到登录页
+        location.href = "login.html";
+      }
+    }
+  })
+}
+
+
 $(function() {
   //1.二级分类切换功能
   $('.category').click(function() {
