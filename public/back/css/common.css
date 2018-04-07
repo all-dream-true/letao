@@ -32,6 +32,9 @@ a:active {
   vertical-align: middle;
 }
 
+.mb_20 {
+  margin-bottom: 20px;
+}
 .mt_150 {
   margin-top: 150px;
 }
