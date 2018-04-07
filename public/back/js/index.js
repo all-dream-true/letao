@@ -25,7 +25,7 @@ $(function() {
     //y轴的刻度，根据数据自动生成比较合适
     //数据
     series: [{
-      name: '销量',
+      name: '人数',
       //表示柱状图
       type: 'bar',
       data: [1000, 1500, 1800, 1200, 1000, 500]
@@ -64,7 +64,7 @@ $(function() {
       {
         name: '品牌',
         type: 'pie',
-        radius : '55%',
+        radius : '50%',
         center: ['50%', '60%'],
         data:[
           {value:335, name:'耐克'},
@@ -75,9 +75,9 @@ $(function() {
         ],
         itemStyle: {
           emphasis: {
-            shadowBlur: 10,
+            shadowBlur: 30,
             shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
+            shadowColor: 'rgba(0, 0, 0, 1)'
           }
         }
       }
