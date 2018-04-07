@@ -2,7 +2,7 @@
   background-color: #222D32;
 }
 
-html,body {
+html, body {
   width: 100%;
   height: 100%;
 }
@@ -11,23 +11,23 @@ html,body {
   margin: 0;
   padding: 0;
 }
-
 ul {
-  list-style:none;
+  list-style: none;
 }
 
 a:link,
 a:visited,
 a:hover,
 a:active {
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .red {
-  color:#A94442;
+  color: #A94442;
 }
+
 .table.table-bordered th,
-.table.table-bordered td{
+.table.table-bordered td {
   text-align: center;
   vertical-align: middle;
 }
@@ -35,27 +35,32 @@ a:active {
 .mt_150 {
   margin-top: 150px;
 }
+.mb_20 {
+  margin-bottom: 20px;
+}
 
 .panel-title {
   height: 40px;
-  line-height:40px;
-  font-size:20px;
+  line-height: 40px;
+  font-size: 20px;
 }
 
-/*lt_aside 开始*/
+/* lt_aside 开始 */
 .lt_aside {
   width: 180px;
   height: 100%;
   background-color: #222D32;
-  position:fixed;
-  left:0;
-  top:0;
-  z-index:999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
   transition: all 1s;
 }
 .lt_aside.hidemenu {
   left: -180px;
 }
+
+
 .lt_aside .brand {
   height: 50px;
   line-height: 50px;
@@ -64,17 +69,20 @@ a:active {
   text-align: center;
 }
 .lt_aside .brand a {
-  color:#fff;
+  color: white;
+}
+
+.lt_aside .user {
+  height: 180px;
 }
 .lt_aside .user {
-  height:180px;
   padding-top: 30px;
 }
 .lt_aside .user img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  display:block;
+  display: block;
   margin: 0 auto;
 }
 .lt_aside .user p {
@@ -88,9 +96,9 @@ a:active {
 .lt_aside .nav a {
   height: 40px;
   line-height: 40px;
-  display:block;
+  display: block;
   color: white;
-  padding-left:40px;
+  padding-left: 40px;
   border-left: 3px solid transparent;
 }
 .lt_aside .nav i {
@@ -100,12 +108,18 @@ a:active {
   background-color: #1D1F21;
   border-left: 3px solid #006699;
 }
+.lt_aside .nav .child a {
+  padding-left: 60px;
+}
 
-/*lt_main 开始*/
+/* lt_aside 结束  */
+
+
+
+/* lt_main 开始 */
 .lt_main {
   height: 1000px;
   width: 100%;
-  /*background-color: pink;*/
   padding-left: 180px;
   padding-top: 50px;
   transition: all 1s;
@@ -113,6 +127,7 @@ a:active {
 .lt_main.hidemenu {
   padding-left: 0px;
 }
+
 .lt_topbar {
   height: 50px;
   width: 100%;
@@ -140,9 +155,11 @@ a:active {
   margin-top: 20px;
 }
 
+
 .echarts_1,
 .echarts_2 {
   width: 48%;
   height: 400px;
 }
-/*lt_main 结束*/
+
+/* lt_main 结束 */
