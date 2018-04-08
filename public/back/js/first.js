@@ -34,7 +34,7 @@ $(function() {
           currentPage: info.page,
           //总页数
           totalPages: Math.ceil(info.total / info.size),
-          //给野马添加点击事件
+          //给页码添加点击事件
           onPageClicked: function(a, b, c, page) {
             //将选中的页码更新到currentPage
             currentPage = page;

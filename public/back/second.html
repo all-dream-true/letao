@@ -52,11 +52,87 @@
     <!--路径导航-->
     <ol class="breadcrumb">
       <li><a href="index.html">管理系统</a></li>
-      <li class="active">首页</li>
+      <li class="active">分类管理</li>
+      <li class="active">二级分类</li>
     </ol>
     <div class="lt_content">
-      <div class="echarts_1 pull-left"></div>
-      <div class="echarts_2 pull-right"></div>
+
+      <button id="addBtn" class="btn btn-default mb_20">添加按钮</button>
+
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td width="10%">序号</td>
+            <td width="30%">一级分类名称</td>
+            <td width="30%">二级分类名称</td>
+            <td width="30%">二级分类LOGO</td>
+          </tr>
+        </thead>
+        <tbody>
+        <!--动态获取数据-->
+          <tr>
+            <td>1</td>
+            <td>女士馆</td>
+            <td>阿萨德2</td>
+            <td><img src="images/none.png" alt="" height="50"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!--分页dom结构-->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--添加二级分类模态框 -->
+<div class="modal fade" id="addModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加分类</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form">
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                <span id="dropdownText">请选择一级分类</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <!--动态获取-->
+                <li><a href="#">Action</a></li>
+              </ul>
+            </div>
+            <input type="hidden" name="categoryId">
+            <!-- 火热的品牌 -->
+            <input type="hidden" name="hot">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="brandName" placeholder="请输入二级分类">
+          </div>
+          <div class="form-group">
+            <label class="btn btn-default" for="fileupload">上传图片</label>
+            <!-- 注意:
+                    1. 指定name用于让后台获取图片, 所以不能乱写
+                    2. 指定data-url, 指定接口地址
+            -->
+            <input type="file" name="pic1" data-url="/category/addSecondCategoryPic" id="fileupload" style="display: none;">
+          </div>
+          <div class="form-group" id="imgBox">
+            <img src="images/none.png" width="100" alt="">
+            <!-- 图片地址 -->
+            <input type="hidden" name="brandLogo">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary" form="form">添加</button>
+      </div>
     </div>
   </div>
 </div>
@@ -81,11 +157,32 @@
 </div>
 
 
+<script type="text/html" id="queryTmp">
+  {{ each rows v i }}
+    <tr>
+      <td>{{ (page-1)*size + i+1 }}</td>
+      <td>{{ v.categoryName }}</td>
+      <td>{{ v.brandName }}</td>
+      <td><img src="{{ v.brandLogo ? v.brandLogo : 'images/none.png' }}" alt="" height="50"></td>
+    </tr>
+  {{ /each }}
+</script>
+
+<scritp type="text/html" id="selectTmp">
+  {{ each rows v }}
+    <li><a href="#" data-id="{{ v.id }}">{{ v.categoryName }}</a></li>
+  {{ /each }}
+</scritp>
+
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<!--引入jquery-fileupload 包-->
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="js/common.js"></script>
 <script src="js/second.js"></script>
 </body>
