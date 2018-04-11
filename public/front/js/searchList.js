@@ -62,7 +62,7 @@ $(function() {
     params.page = 1;
     params.pageSize = 100;
 
-  
+
     //需要排序的话需要传入参数price或者是num,1是升序2是降序
     if($('.lt_sort .current').length > 0) {
       //有高亮的元素需要排序
