@@ -21,7 +21,7 @@ function getSearch(key) {
   //解码成中文
   search = decodeURI(search);
   //去掉？
-  search = search.splice(1);
+  search = search.slice(1);
   //分割成数组
   var arr = search.split('&');
 
@@ -32,6 +32,7 @@ function getSearch(key) {
     var v = element.split('=')[1]; //value
     obj[ k ] = v;
 
-    return obj[key];
   })
+
+  return obj[key];
 }
