@@ -175,3 +175,22 @@ img {
 .lt_product_item .old {
   text-decoration: line-through;
 }
+
+
+
+
+/*尺码的相关的样式*/
+.lt_pro_size span {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  padding: 0 3px;
+  margin: 4px 0;
+}
+
+.lt_pro_size span.current {
+  background-color: #069;
+  color: #fff;
+}
