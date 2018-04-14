@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="lib/fa/css/font-awesome.min.css">
   <link rel="stylesheet" href="lib/mui/css/mui.css">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
 
@@ -27,19 +27,42 @@
     <div class="mui-scroll-wrapper">
       <div class="mui-scroll">
         <!--这里放置真实显示的DOM内容-->
-        <ul class="mui-table-view">
-          <li class="mui-table-view-cell mui-media">
-            <a href="javascript:;">
-              <img class="mui-media-object mui-pull-left" src="images/user.jpg">
-              <div class="mui-media-body">
-                匡威三星标1970s converse复刻 142334c 144757c三星标黑色高帮
-                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+        <ul class="mui-table-view" id="productList">
+          <li class="mui-table-view-cell">
+            <div class="mui-slider-right mui-disabled">
+              <a class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit"></a>
+              <a class="mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete"></a>
+            </div>
+            <div class="mui-slider-handle">
+              <div class="mui-table-cell">
+                <div class="cart_img">
+                  <img src="images/none.png" alt="">
+                  <input type="checkbox" class="ck">
+                </div>
+                <div class="cart_info">
+                  <p class="proName mui-ellipsis-2">匡威三星标1970s converse复刻 142334c 144757c三星标黑色高帮</p>
+                  <p>
+                    <span class="price">&yen;499.1</span>
+                    <span class="oldPrice">&yen;888.1</span>
+                    <span class="mui-pull-right">1双</span>
+                  </p>
+                  <p>鞋码: 50</p>
+                </div>
               </div>
-            </a>
+            </div>
           </li>
         </ul>
       </div>
     </div>
+  </div>
+
+  <div class="lt_total">
+    <div class="mui-pull-left">
+      <span>订单总金额 &nbsp;&yen;</span>
+      <span class="totalPrice">00.00</span>
+    </div>
+
+    <a class="mui-pull-right" href="javascript:;">生成订单</a>
   </div>
 
 
@@ -56,11 +79,70 @@
 </div>
 
 
+<script type="text/html" id="productTmp">
+{{ each list v i }}
+  <li class="mui-table-view-cell">
+    <div class="mui-slider-right mui-disabled">
+      <a
+          data-id="{{ v.id }}"
+          data-product-size="{{ v.productSize }}"
+          data-size="{{ v.size }}"
+          data-product-num="{{ v.productNum }}"
+          data-num="{{ v.num }}"
+          class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit"></a>
+      <a
+          data-id="{{ v.id }}"
+          class="mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete"></a>
+    </div>
+    <div class="mui-slider-handle">
+      <div class="mui-table-cell">
+        <div class="cart_img">
+          <img src="{{ v.pic[0].picAddr }}" alt="">
+          <input data-price="{{ v.price }}" data-num="{{ v.num }}" type="checkbox" class="ck">
+        </div>
+        <div class="cart_info">
+          <p class="proName mui-ellipsis-2">{{ v.proName }}</p>
+          <p>
+            <span class="price">&yen;{{ v.price }}</span>
+            <span class="oldPrice">&yen;{{ v.oldPrice }}</span>
+            <span class="mui-pull-right">{{ v.num }}双</span>
+          </p>
+          <p>鞋码: {{ v.size }}</p>
+        </div>
+      </div>
+    </div>
+  </li>
+{{ /each }}
+</script>
+
+<script type="text/html"id="editTmp">
+  <div class="lt_pro_size">
+    尺码:
+    <%
+    var arr = productSize.split('-');  // ['40', 50]
+    var start = arr[0];  // 40
+    var end = arr[1];   // 50
+    for ( var i = start; i <= end; i++ ) {
+    %>
+    <span class="{{ i == size ? 'current' : '' }}">{{ i }}</span>
+    <% } %>
+  </div>
+
+  <div class="lt_num">
+    数量:
+    <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{ productNum }}'>
+      <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+      <input class="mui-numbox-input" type="number" value="{{ num }}"/>
+      <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+    </div>
+  </div>
+</script>
 
 
 <script src="lib/mui/js/mui.min.js"></script>
 <script src="lib/zepto/zepto.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
-<script src="js/login.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>

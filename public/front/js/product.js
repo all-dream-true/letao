@@ -47,6 +47,11 @@ $(function() {
     var size = $('.lt_pro_size span.current').text();
     var num = $('.mui-numbox input').val();
     //console.log(size,num);
+    if ( !size ) {
+      mui.toast( "请选择尺码" );
+      // 没有选择尺码, 应该啥都不做
+      return;
+    }
 
     $.ajax({
       type: 'post',
@@ -68,7 +73,7 @@ $(function() {
 
         }
 
-        //如果没有登录d
+        //如果没有登录
         if(info.error === 400) {
           location.href = 'login.html?retUrl='+location.href;
         }
